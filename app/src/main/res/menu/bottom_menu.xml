@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/groupsFragment"
+     android:icon="@drawable/ic_baseline_list_24"
+     android:title="Groups"/>
+    <item android:id="@+id/activePlan"
+        android:icon="@drawable/ic_baseline_alarm_24"
+        android:title="Active"/>
+    <item android:id="@+id/newPlan"
+        android:icon="@drawable/ic_baseline_add_alarm_24"
+        android:title="New"/>
+</menu>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/activePlan">
+    <fragment
+        android:id="@+id/groupsFragment"
+        android:name="com.example.optlearn.fragments.GroupsFragment"
+        android:label="fragment_groups"
+        tools:layout="@layout/fragment_groups" />
+    <fragment
+        android:id="@+id/newPlan"
+        android:name="com.example.optlearn.fragments.NewPlan"
+        android:label="fragment_new_plan"
+        tools:layout="@layout/fragment_new_plan" >
+        <action
+            android:id="@+id/action_newPlan_to_activePlan"
+            app:destination="@id/activePlan" />
+    </fragment>
+    <fragment
+        android:id="@+id/activePlan"
+        android:name="com.example.optlearn.fragments.ActivePlan"
+        android:label="fragment_active_plan"
+        tools:layout="@layout/fragment_active_plan" >
+        <action
+            android:id="@+id/action_activePlan_to_groupsFragment"
+            app:destination="@id/groupsFragment" />
+    </fragment>
+</navigation>
