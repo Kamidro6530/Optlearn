@@ -7,4 +7,6 @@
     <color name="background">#FDF0D5</color>
     <color name="secondColor">#C6D8D3</color>
     <color name="buttonColor">#F0544F</color>
+
+    <color name="activeSwitch">#f7a9a7</color>
 </resources>

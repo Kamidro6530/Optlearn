@@ -1,14 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/background"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".fragments.NewPlan">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/new_mainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="new group" />
-</FrameLayout>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/title_custom_font"
+        android:text="New Task"
+        android:textSize="28sp" />
+
+    <EditText
+        android:id="@+id/new_name"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/new_mainText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/cutom_editext"
+        android:ems="10"
+        android:fontFamily="@font/raleway_medium"
+        android:inputType="textNoSuggestions"
+        android:text="Name"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/new_durationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/title_custom_font"
+        android:text="Task duration"
+        android:textSize="28sp" />
+
+    <Button
+        android:id="@+id/new_durationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_durationText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/cutom_new_button"
+        android:fontFamily="@font/raleway_medium"
+        android:padding="6dp"
+        android:text="Click to choose the duration" />
+
+    <TextView
+        android:id="@+id/new_breaksText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_durationButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/sensei_medium"
+        android:text="Breaks"
+        android:textSize="28sp" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/new_breaksSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/new_breaksText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="-32dp"
+        android:layout_toEndOf="@+id/new_breaksText"
+        app:thumbTint="@color/switch_thumb"
+        app:trackTint="@color/switch_track" />
+
+    <NumberPicker
+        android:id="@+id/new_breaksPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_below="@id/new_breaksText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:id="@+id/new_breakTimeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_breaksPicker"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/sensei_medium"
+        android:text="Breaks Time"
+        android:visibility="invisible"
+        android:textSize="28sp" />
+
+    <Button
+        android:id="@+id/new_durationBreaksButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_breakTimeText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/cutom_new_button"
+        android:fontFamily="@font/raleway_medium"
+        android:padding="6dp"
+        android:visibility="invisible"
+        android:text="Click to choose the duration" />
+
+    <Button
+        android:id="@+id/new_enterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_durationBreaksButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/cutom_new_button"
+        android:fontFamily="@font/raleway_medium"
+        android:padding="6dp"
+        android:text="Enter" />
+
+
+</RelativeLayout>
