@@ -1,22 +1,50 @@
 package com.example.optlearn.recyclers
 
+import android.app.AlertDialog
 import android.app.Application
+import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.optlearn.R
 import com.example.optlearn.mvvm.TaskViewModel
 import com.example.optlearn.room.Task
 
 
-class ActiveRecyclerViewAdapter(var list: List<Task>) : RecyclerView.Adapter<MyHolder>() {
+class ActiveRecyclerViewAdapter(var list: ArrayList<Task>,var inputFragmentView : View?) : RecyclerView.Adapter<MyHolder>() {
+    lateinit var context : Context
+    lateinit var dialogView : View
     lateinit var viewModel: TaskViewModel
+    lateinit var parent: ViewGroup
+
+
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-       val view = LayoutInflater.from(parent.context).inflate(R.layout.task_layout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.task_recyclerview_item, parent, false)
+        when (list[viewType].success) {
+            0 -> {view.setBackgroundResource(R.drawable.task_recyclerview_background)}
+            1 -> {view.setBackgroundResource(R.drawable.success_task_recyclerview_background)}
+            2 -> {view.setBackgroundResource(R.drawable.failure_task_recyclerview_background)}
+        }
+
+
+
         viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(Application()).create(TaskViewModel::class.java)
+        context = parent.context
+            this.parent = parent
+
+        dialogView = LayoutInflater.from(parent.context).inflate(R.layout.delete_dialog_layout,parent,false)
         return MyHolder(view)
     }
 
@@ -30,14 +58,47 @@ class ActiveRecyclerViewAdapter(var list: List<Task>) : RecyclerView.Adapter<MyH
         holder.time.text = "Time : ${list[position].time}"
         holder.breaks.text = "Breaks :${list[position].breaks.toString()}"
 
+
+
         holder.itemView.setOnClickListener {
+            var bundle = bundleOf(
+                "id" to list[position].id,
+                "name" to list[position].name,
+                "time" to list[position].time,
+                "breaks" to list[position].breaks.toString(),
+                "time_breaks" to list[position].time_breaks,
+                "success" to list[position].success
+            )
+            if (list[position].success == 0)
+            inputFragmentView?.findNavController()?.navigate(R.id.action_activePlan_to_taskFragment, bundle)
+            else
+                inputFragmentView?.findNavController()?.navigate(R.id.action_activePlan_to_successOrFailureTaskFragment, bundle)
+        }
 
-          /*  viewModel.deleteTask(list[position])
-            holder.itemView.visibility = View.GONE
-            notifyItemRemoved(position)*/
+        holder.itemView.setOnLongClickListener {
 
-            
+            val dialogBuilder = AlertDialog.Builder(context)
+            val alertDialog = dialogBuilder.create()
+            alertDialog.setView(dialogView)
+            alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            val positive = dialogView.findViewById<Button>(R.id.delete_dialog_positive)
+            val negative = dialogView.findViewById<Button>(R.id.delete_dialog_negative)
 
+
+            positive.setOnClickListener {
+                viewModel.deleteTask(list[position])
+                list.remove(list[position])
+                holder.itemView.visibility = View.GONE
+                alertDialog.dismiss()
+                notifyDataSetChanged()
+            }
+
+            negative.setOnClickListener {
+                alertDialog.dismiss()
+            }
+            parent.removeAllViews()
+            alertDialog.show()
+            true
         }
     }
 
@@ -45,7 +106,7 @@ class ActiveRecyclerViewAdapter(var list: List<Task>) : RecyclerView.Adapter<MyH
 
 class MyHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    var name = view.findViewById<TextView>(R.id.task_name)
-    var time = view.findViewById<TextView>(R.id.task_time)
-    var breaks = view.findViewById<TextView>(R.id.task_breaks)
+    var name = view.findViewById<TextView>(R.id.item_name)
+    var time = view.findViewById<TextView>(R.id.item_time)
+    var breaks = view.findViewById<TextView>(R.id.item_breaks)
 }

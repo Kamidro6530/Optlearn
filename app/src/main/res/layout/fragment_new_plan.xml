@@ -48,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/new_durationText"
         android:layout_centerHorizontal="true"
+        android:textColor="@color/secondColor"
         android:layout_marginTop="15dp"
         android:background="@drawable/cutom_new_button"
         android:fontFamily="@font/raleway_medium"
@@ -109,6 +110,7 @@
         android:background="@drawable/cutom_new_button"
         android:fontFamily="@font/raleway_medium"
         android:padding="6dp"
+        android:textColor="@color/secondColor"
         android:visibility="invisible"
         android:text="Click to choose the duration" />
 
@@ -119,6 +121,7 @@
         android:layout_below="@id/new_durationBreaksButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
+        android:textColor="@color/secondColor"
         android:background="@drawable/cutom_new_button"
         android:fontFamily="@font/raleway_medium"
         android:padding="6dp"

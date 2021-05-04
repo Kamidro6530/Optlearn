@@ -26,5 +26,29 @@
         <action
             android:id="@+id/action_activePlan_to_groupsFragment"
             app:destination="@id/groupsFragment" />
+        <action
+            android:id="@+id/action_activePlan_to_taskFragment"
+            app:destination="@id/taskFragment" />
+        <action
+            android:id="@+id/action_activePlan_to_successOrFailureTaskFragment"
+            app:destination="@id/successOrFailureTaskFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskFragment"
+        android:name="com.example.optlearn.fragments.TaskFragment"
+        android:label="TaskFragment"
+        tools:layout="@layout/task_layout">
+        <action
+            android:id="@+id/action_taskFragment_to_activePlan"
+            app:destination="@id/activePlan" />
+    </fragment>
+    <fragment
+        android:id="@+id/successOrFailureTaskFragment"
+        android:name="com.example.optlearn.fragments.SuccessOrFailureTaskFragment"
+        android:label="fragment_success_or_failure_task"
+        tools:layout="@layout/fragment_success_or_failure_task" >
+        <action
+            android:id="@+id/action_successOrFailureTaskFragment_to_activePlan"
+            app:destination="@id/activePlan" />
     </fragment>
 </navigation>

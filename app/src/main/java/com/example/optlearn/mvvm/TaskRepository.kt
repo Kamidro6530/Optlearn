@@ -28,5 +28,9 @@ class TaskRepository(application: Application)   {
         CoroutineScope(Dispatchers.IO).launch {
             taskDao.deleteTask(task)
         }
+    suspend fun updateTask(task: Task)
+         {
+            taskDao.updateTask(task)
+        }
 
 }

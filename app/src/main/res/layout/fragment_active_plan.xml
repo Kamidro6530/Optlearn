@@ -10,4 +10,15 @@
         android:id="@+id/active_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <Button
+        android:id="@+id/active_restartBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/cutom_new_button"
+        android:text="Restart"
+        android:fontFamily="@font/raleway_medium"
+        android:textColor="@color/secondColor"/>
 </FrameLayout>

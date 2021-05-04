@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/cutom_dialog"
+    android:layout_height="130dp">
+
+    <TextView
+        android:id="@+id/finish_dialog_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:fontFamily="@font/sensei_medium"
+        android:text="Did you manage to complete the task  ?"
+        android:textSize="18dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.111" />
+
+    <Button
+        android:id="@+id/finish_dialog_positive"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/custom_yes_button"
+        android:fontFamily="@font/raleway_medium"
+        android:text="Yes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/finish_dialog_text"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <Button
+        android:id="@+id/finish_dialog_negative"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="18dp"
+        android:layout_toRightOf="@id/finish_dialog_positive"
+        android:background="@drawable/cutom_new_button"
+        android:fontFamily="@font/raleway_medium"
+        android:text="No"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintStart_toEndOf="@+id/finish_dialog_positive"
+        app:layout_constraintTop_toBottomOf="@+id/finish_dialog_text"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <Button
+        android:id="@+id/finish_dialog_neutral"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="18dp"
+        android:layout_toRightOf="@id/finish_dialog_positive"
+        android:background="@drawable/custom_cancel_button"
+        android:fontFamily="@font/raleway_medium"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/finish_dialog_negative"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toEndOf="@+id/finish_dialog_positive"
+        app:layout_constraintTop_toBottomOf="@+id/finish_dialog_text"
+        app:layout_constraintVertical_bias="0.25" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

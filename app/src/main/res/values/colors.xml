@@ -3,10 +3,11 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-
+    
+    <color name="grey">#DCDCDC</color>
     <color name="background">#FDF0D5</color>
     <color name="secondColor">#C6D8D3</color>
     <color name="buttonColor">#F0544F</color>
-
+    <color name="buttonYes">#90be6d</color>
     <color name="activeSwitch">#f7a9a7</color>
 </resources>

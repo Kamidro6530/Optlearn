@@ -9,6 +9,9 @@ import android.widget.*
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.room.Room
 import com.example.optlearn.R
 import com.example.optlearn.mvvm.TaskViewModel
@@ -28,6 +31,7 @@ class NewPlan : Fragment() {
     ): View? {
         viewModel = ViewModelProvider.AndroidViewModelFactory(activity?.application!!).create(TaskViewModel::class.java)
         //
+
         var timeIntoTask = ""
         var switchIsEnabled = false
         var breaksDurationIntoTask = ""
@@ -77,7 +81,7 @@ class NewPlan : Fragment() {
         breaksDurationButton.setOnClickListener {
             val datePickerDialog = TimePickerDialog(inputFragmentView.context,R.style.DialogTheme,
                 { p0, hour, minute ->
-                    Toast.makeText(inputFragmentView.context, "Hour : $hour Minutes  : $minute",Toast.LENGTH_LONG).show()
+
                     breaksDurationIntoTask="$hour:$minute"
                     breaksDurationButton.text = breaksDurationIntoTask
                 }, 0, 0, true
@@ -91,11 +95,30 @@ class NewPlan : Fragment() {
 
             if (switchIsEnabled == false){
                 //Insert object without breaks
-                       viewModel.insertTask(Task(nameIntoTask,timeIntoTask,0,""))
+                    if (nameIntoTask!="" && timeIntoTask!="") {
+
+                        Toast.makeText(inputFragmentView.context,"Name : $nameIntoTask   Time : $timeIntoTask",Toast.LENGTH_LONG).show()
+                        viewModel.insertTask(Task(0,nameIntoTask, timeIntoTask, 0, "",0))
+                        val action = NewPlanDirections.actionNewPlanToActivePlan()
+                        inputFragmentView.findNavController().navigate(action)
+                        Navigation.createNavigateOnClickListener(action)
+                    }
+                else
+                    Toast.makeText(inputFragmentView.context,"All fields must not be null",Toast.LENGTH_LONG).show()
             }else {
                 //Insert object with breaks
-                        viewModel.insertTask(Task(nameIntoTask,timeIntoTask,breaksPicker.value,breaksDurationIntoTask))
+                if (nameIntoTask!="" && timeIntoTask!="" && breaksPicker.value!=0 && breaksDurationIntoTask!="") {
+                    viewModel.insertTask(Task(0,nameIntoTask,timeIntoTask,breaksPicker.value,breaksDurationIntoTask,0))
+                    val action = NewPlanDirections.actionNewPlanToActivePlan()
+                    inputFragmentView.findNavController().navigate(action)
+                    Navigation.createNavigateOnClickListener(action)
+                }
+                else
+                    Toast.makeText(inputFragmentView.context,"All fields must not be null or 0",Toast.LENGTH_LONG).show()
+
+
             }
+
 
         }
 
