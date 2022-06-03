@@ -19,7 +19,7 @@ import com.example.optlearn.mvvm.TaskViewModel
 import com.example.optlearn.room.Task
 
 
-class ActiveRecyclerViewAdapter(var list: ArrayList<Task>,var inputFragmentView : View?) : RecyclerView.Adapter<MyHolder>() {
+class GroupsRecyclerViewAdapter(var list: ArrayList<Task>,var inputFragmentView : View?) : RecyclerView.Adapter<MyGroupHolder>() {
     lateinit var context : Context
     lateinit var dialogView : View
     lateinit var viewModel: TaskViewModel
@@ -30,8 +30,8 @@ class ActiveRecyclerViewAdapter(var list: ArrayList<Task>,var inputFragmentView 
         return position
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.task_recyclerview_item, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyGroupHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.group_recyclerview_item, parent, false)
         when (list[viewType].success) {
             0 -> {view.setBackgroundResource(R.drawable.task_recyclerview_background)}
             1 -> {view.setBackgroundResource(R.drawable.success_task_recyclerview_background)}
@@ -45,7 +45,7 @@ class ActiveRecyclerViewAdapter(var list: ArrayList<Task>,var inputFragmentView 
             this.parent = parent
 
         dialogView = LayoutInflater.from(parent.context).inflate(R.layout.delete_dialog_layout,parent,false)
-        return MyHolder(view)
+        return MyGroupHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -53,10 +53,9 @@ class ActiveRecyclerViewAdapter(var list: ArrayList<Task>,var inputFragmentView 
         return list.size
     }
 
-    override fun onBindViewHolder(holder: MyHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyGroupHolder, position: Int) {
         holder.name.text = list[position].name
-        holder.time.text = "Time : ${list[position].time}"
-        holder.breaks.text = "Breaks :${list[position].breaks.toString()}"
+
 
 
 
@@ -104,9 +103,8 @@ class ActiveRecyclerViewAdapter(var list: ArrayList<Task>,var inputFragmentView 
 
 }
 
-class MyHolder(view: View) : RecyclerView.ViewHolder(view) {
+class MyGroupHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    var name = view.findViewById<TextView>(R.id.task_item_name)
-    var time = view.findViewById<TextView>(R.id.task_item_time)
-    var breaks = view.findViewById<TextView>(R.id.task_item_breaks)
+    var name = view.findViewById<TextView>(R.id.group_item_name)
+
 }

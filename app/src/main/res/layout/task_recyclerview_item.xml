@@ -10,7 +10,7 @@
     android:background="@drawable/task_recyclerview_background">
 
     <TextView
-        android:id="@+id/item_name"
+        android:id="@+id/task_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
@@ -28,7 +28,7 @@
         app:layout_constraintVertical_bias="0.102" />
 
     <TextView
-        android:id="@+id/item_time"
+        android:id="@+id/task_item_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/sensei_medium"
@@ -40,11 +40,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_name"
+        app:layout_constraintTop_toBottomOf="@+id/task_item_name"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/item_breaks"
+        android:id="@+id/task_item_breaks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/sensei_medium"
@@ -56,6 +56,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_name"
+        app:layout_constraintTop_toBottomOf="@+id/task_item_name"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

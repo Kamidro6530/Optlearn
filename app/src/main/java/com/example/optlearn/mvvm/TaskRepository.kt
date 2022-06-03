@@ -2,6 +2,7 @@ package com.example.optlearn.mvvm
 
 import android.app.Application
 import androidx.lifecycle.LiveData
+import com.example.optlearn.room.Group
 import com.example.optlearn.room.Task
 import com.example.optlearn.room.TaskDao
 import com.example.optlearn.room.TaskDatabase
@@ -32,5 +33,27 @@ class TaskRepository(application: Application)   {
          {
             taskDao.updateTask(task)
         }
+
+
+    fun getAllGroups() : Deferred<LiveData<List<Group>>> =
+        CoroutineScope(Dispatchers.IO).async {
+            taskDao.getAllGroups()
+        }
+
+    fun insertTask(group: Group) =
+        CoroutineScope(Dispatchers.IO).launch {
+            taskDao.insertGroup(group)
+        }
+
+    fun deleteTask(group: Group) =
+        CoroutineScope(Dispatchers.IO).launch {
+            taskDao.deleteGroup(group)
+        }
+    suspend fun updateTask(group: Group)
+    {
+        CoroutineScope(Dispatchers.IO).launch {
+            taskDao.updateGroup(group)
+        }
+    }
 
 }

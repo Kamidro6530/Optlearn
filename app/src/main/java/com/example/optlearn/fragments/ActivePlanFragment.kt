@@ -17,6 +17,7 @@ import com.example.optlearn.R
 import com.example.optlearn.mvvm.TaskViewModel
 import com.example.optlearn.recyclers.ActiveRecyclerViewAdapter
 import com.example.optlearn.room.Task
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.zip.Inflater
 
 
@@ -37,7 +38,7 @@ class ActivePlan : Fragment() {
 
         val inputFragmentView = inflater.inflate(R.layout.fragment_active_plan, container, false)
         val recyclerView =inputFragmentView?.findViewById<RecyclerView>(R.id.active_recyclerView)
-        val restartBT = inputFragmentView.findViewById<Button>(R.id.active_restartBT)
+        val restartBT = inputFragmentView.findViewById<FloatingActionButton>(R.id.active_restartFAB)
 
        val list = viewModel.getAllTasks()
 

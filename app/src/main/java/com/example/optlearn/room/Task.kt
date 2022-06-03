@@ -2,9 +2,11 @@ package com.example.optlearn.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import java.time.LocalTime
 
 @Entity
+
 data class Task(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,

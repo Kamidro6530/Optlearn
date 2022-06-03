@@ -8,6 +8,7 @@ import kotlinx.coroutines.Deferred
 interface TaskDao {
 
     @Query("SELECT * FROM task")
+
      fun getAllTasks() : LiveData<List<Task>>
 
     @Insert
@@ -18,4 +19,15 @@ interface TaskDao {
 
      @Update(onConflict = OnConflictStrategy.REPLACE)
       suspend fun updateTask(vararg  task : Task)
+    @Query("SELECT * FROM `group`")
+    fun getAllGroups() : LiveData<List<Group>>
+
+    @Insert
+    fun insertGroup ( vararg  group: Group )
+
+    @Delete
+    fun deleteGroup (vararg group : Group)
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun updateGroup(vararg  group : Group)
 }
